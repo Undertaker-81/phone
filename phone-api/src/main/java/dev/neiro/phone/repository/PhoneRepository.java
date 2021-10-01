@@ -1,6 +1,8 @@
 package dev.neiro.phone.repository;
 
-import org.springframework.boot.autoconfigure.orm.jpa.JpaProperties;
+
+import dev.neiro.phone.model.PhoneNumber;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -8,6 +10,7 @@ import org.springframework.stereotype.Repository;
  * 01.10.2021
  */
 @Repository
-public class PhoneRepository extends JpaProperties {
+public interface PhoneRepository extends JpaRepository<PhoneNumber, Long> {
 
+    PhoneNumber getPhoneNumbersByPhoneNumber(String number);
 }
