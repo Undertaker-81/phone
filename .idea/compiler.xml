@@ -10,6 +10,9 @@
         <module name="phone-api" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="phone-ui" target="1.5" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
