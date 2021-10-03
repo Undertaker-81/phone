@@ -5,6 +5,7 @@ import dev.neiro.phone.model.PhoneNumber;
 import dev.neiro.phone.repository.PhoneRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * @author Panfilov Dmitriy
@@ -25,8 +26,25 @@ public class PhoneService {
             phoneNumberDto.setAddress(phoneNumber.getAddress());
             phoneNumberDto.setSnils(phoneNumber.getSnils());
         } else {
+            phoneNumberDto.setFio("");
             phoneNumberDto.setPhoneNumber(number);
+            phoneNumberDto.setAddress("");
+            phoneNumberDto.setSnils("");
         }
         return phoneNumberDto;
+    }
+
+    @Transactional
+    public void save(PhoneNumberDto phoneNumberDto) {
+        if (phoneNumberDto != null) {
+
+                PhoneNumber phoneNumber = new PhoneNumber();
+                phoneNumber.setPhoneNumber(phoneNumberDto.getPhoneNumber());
+                phoneNumber.setAddress(phoneNumberDto.getAddress());
+                phoneNumber.setFio(phoneNumberDto.getFio());
+                phoneNumber.setSnils(phoneNumberDto.getSnils());
+                repository.save(phoneNumber);
+
+        }
     }
 }
