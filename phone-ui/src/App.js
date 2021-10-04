@@ -5,7 +5,6 @@ import {useState} from 'react';
 import {Button} from '@material-ui/core';
 import SendIcon from "mdi-react/SendIcon";
 import Phone from "./model/phone";
-import Stringify from 'react-stringify';
 
 
 function App() {
@@ -25,7 +24,6 @@ function App() {
     console.log('Connected: ' + frame);
     stompClient.subscribe('/chat', function (phone_info) {
       console.log(phone_info);
-      //you can execute any function here
      var st = phone_info.body.toString();
       var phone = eval('('+st+')');
       setPhone(phone.phoneNumber);
@@ -54,9 +52,7 @@ function App() {
     <Button
         variant="contained" color="primary"
         startIcon={<SendIcon/>}
-     //   onClick={() => {stompClient.send("/app/send/message", {}, id + "," + fio + "," + snils + "," + address + "," + phone)}}>
         onClick={() => {stompClient.send("/app/send/message", {},   JSON.stringify(new Phone(id, fio, snils, address, phone)))}}>
-
         Сохранить
     </Button>
     </div>

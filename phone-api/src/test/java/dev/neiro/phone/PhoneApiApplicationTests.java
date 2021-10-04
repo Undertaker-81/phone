@@ -12,7 +12,7 @@ class PhoneApiApplicationTests {
 
 	@Test
 	void contextLoads() {
-		System.out.println(repository.getPhoneNumbersByPhoneNumber("+79058547199"));
+
 	}
 
 }

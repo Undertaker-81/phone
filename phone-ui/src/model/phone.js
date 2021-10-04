@@ -8,4 +8,4 @@ class Phone {
     }
 }
 
-module.exports = Phone;
+export default Phone;

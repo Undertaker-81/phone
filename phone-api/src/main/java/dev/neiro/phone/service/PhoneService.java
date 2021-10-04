@@ -38,13 +38,22 @@ public class PhoneService {
     public void save(PhoneNumberDto phoneNumberDto) {
         if (phoneNumberDto != null) {
 
+            if (phoneNumberDto.getId() == null) {
                 PhoneNumber phoneNumber = new PhoneNumber();
                 phoneNumber.setPhoneNumber(phoneNumberDto.getPhoneNumber());
                 phoneNumber.setAddress(phoneNumberDto.getAddress());
                 phoneNumber.setFio(phoneNumberDto.getFio());
                 phoneNumber.setSnils(phoneNumberDto.getSnils());
                 repository.save(phoneNumber);
-
+            }
+            else {
+                PhoneNumber phoneNumber = repository.getById(phoneNumberDto.getId());
+                phoneNumber.setPhoneNumber(phoneNumberDto.getPhoneNumber());
+                phoneNumber.setAddress(phoneNumberDto.getAddress());
+                phoneNumber.setFio(phoneNumberDto.getFio());
+                phoneNumber.setSnils(phoneNumberDto.getSnils());
+                repository.save(phoneNumber);
+            }
         }
     }
 }
