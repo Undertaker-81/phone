@@ -13,7 +13,7 @@ function App() {
   const [snils, setSnils] = useState("");
   const [address, setAddress] = useState("");
   const [id, setId] = useState(0);
-  var sock = new SockJS('http://localhost:8080/ws');
+  var sock = new SockJS('https://phone-app-react.herokuapp.com/ws');
   let stompClient = Stomp.over(sock);
 
 
