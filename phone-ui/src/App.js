@@ -25,7 +25,8 @@ function App() {
     stompClient.subscribe('/chat', function (phone_info) {
       console.log(phone_info);
      var st = phone_info.body.toString();
-      var phone = eval('('+st+')');
+    //  var phone = eval('('+st+')');
+      var phone = JSON.parse(st);
       setPhone(phone.phoneNumber);
       setFio(phone.fio);
       setSnils(phone.snils);
